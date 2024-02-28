@@ -1,0 +1,19 @@
+services:
+
+    platform-sql:
+        image: postgres:16.2
+        environment:
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - platform-sql-data:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
+
+    rabbit-mq:
+        image: rabbitmq:3-management
+        ports:
+            - 15672:15672
+
+volumes:
+    platform-sql-data:
+        external: false
